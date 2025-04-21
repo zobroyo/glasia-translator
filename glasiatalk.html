@@ -1,0 +1,117 @@
+import tkinter as tk
+
+def swap_numbers():
+    num1 = float(entry_num1.get())
+    num2 = float(entry_num2.get())
+    num3 = num1
+    num1 = num2
+    num2 = num3
+    label_result.config(text=f"Swapped numbers: {num1} and {num2}")
+
+def brand_name_generator():
+    pet = entry_pet.get()
+    place = entry_place.get()
+    brand_name = place + pet
+    label_result.config(text=f"Your brand name: {brand_name}")
+
+def student_details():
+    student_name1 = entry_name.get()
+    age = int(entry_age.get())
+    label_result.config(text=f"Name: {student_name1}, Length of Name: {len(student_name1)}, Age: {age}")
+
+def add_digits_of_number():
+    num = entry_num.get()
+    sum_digits = int(num[0]) + int(num[1])
+    label_result.config(text=f"Sum of digits: {sum_digits}")
+
+def order_of_operations():
+    result = 3*3/3-3+3
+    label_result.config(text=f"Order of operations result: {result}")
+
+def bmi_calculator():
+    weight = float(entry_weight.get())
+    height = float(entry_height.get())
+    bmi = round(weight / height**2, 1)
+    label_result.config(text=f"BMI: {bmi}")
+
+def time_left_until_90():
+    age = int(entry_age_90.get())
+    years = 90 - age
+    months = years * 12
+    weeks = years * 52.1429
+    days = years * 365
+    label_result.config(text=f"Years: {years}, Months: {months}, Weeks: {weeks}, Days: {days}")
+
+def tip_calculator():
+    Total_amount = float(entry_total_amount.get())
+    Perc_tip = int(entry_perc_tip.get())
+    Number_people = int(entry_number_people.get())
+    total_tip = Total_amount * (Perc_tip / 100)
+    sub_ammount = Total_amount + total_tip
+    final_ammount = sub_ammount / Number_people
+    label_result.config(text=f"Each Person Pays: {final_ammount} AED")
+
+def clear_result():
+    label_result.config(text="")
+
+# Initialize window
+window = tk.Tk()
+window.title("Zobro's Tools")
+window.geometry("600x600")
+window.configure(bg='white')
+
+# Use a modern font like Roboto
+window.option_add("*Font", "Roboto 12")
+
+# Header
+header = tk.Label(window, text="Welcome to Zobro's Tools", font=("Roboto", 20), bg='white')
+header.pack(pady=20)
+
+# Create frames for different sections
+frame1 = tk.Frame(window, bg='white')
+frame1.pack(pady=10)
+
+frame2 = tk.Frame(window, bg='white')
+frame2.pack(pady=10)
+
+frame3 = tk.Frame(window, bg='white')
+frame3.pack(pady=10)
+
+# Add buttons and entries for different tools
+entry_num1 = tk.Entry(frame1, font=("Roboto", 14))
+entry_num1.pack(pady=5)
+
+entry_num2 = tk.Entry(frame1, font=("Roboto", 14))
+entry_num2.pack(pady=5)
+
+btn_swap = tk.Button(frame1, text="Swap Numbers", command=swap_numbers, bg="#4CAF50", fg="white", relief="flat", width=20)
+btn_swap.pack(pady=10)
+
+entry_pet = tk.Entry(frame2, font=("Roboto", 14))
+entry_pet.pack(pady=5)
+
+entry_place = tk.Entry(frame2, font=("Roboto", 14))
+entry_place.pack(pady=5)
+
+btn_brand_name = tk.Button(frame2, text="Generate Brand Name", command=brand_name_generator, bg="#4CAF50", fg="white", relief="flat", width=20)
+btn_brand_name.pack(pady=10)
+
+entry_name = tk.Entry(frame3, font=("Roboto", 14))
+entry_name.pack(pady=5)
+
+entry_age = tk.Entry(frame3, font=("Roboto", 14))
+entry_age.pack(pady=5)
+
+btn_student_details = tk.Button(frame3, text="Student Details", command=student_details, bg="#4CAF50", fg="white", relief="flat", width=20)
+btn_student_details.pack(pady=10)
+
+# Result Label
+label_result = tk.Label(window, text="", font=("Roboto", 14), bg="white")
+label_result.pack(pady=20)
+
+# Clear Result Button
+btn_clear = tk.Button(window, text="Clear", command=clear_result, bg="#f44336", fg="white", relief="flat", width=20)
+btn_clear.pack(pady=10)
+
+# Main loop
+window.mainloop()
